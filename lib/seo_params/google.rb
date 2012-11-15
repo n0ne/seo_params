@@ -6,7 +6,7 @@ require "em-synchrony"
 require "em-synchrony/em-http"
 require "em-synchrony/fiber_iterator"
 require 'nokogiri'
-require 'uri'
+require 'open-uri'
 
 module SeoParams
 
@@ -14,6 +14,7 @@ module SeoParams
 
     def initialize(url)
       @url = url
+      @host = get_host
     end
 
 
@@ -62,7 +63,9 @@ module SeoParams
 
         doc.xpath('//ol/li/h3/a').each do |link|
           url = link['href'][/(https?:\/\/[\S]+)(&sa)/,1]
-          if url.to_s[/none.com.ua/]
+
+
+          if url.to_s[/#{Regexp.escape(@host)}/]
             pos = i
             break
           else
@@ -70,6 +73,12 @@ module SeoParams
           end
         end
         pos
+      end
+
+      def get_host
+        @url.match(/^(http:\/\/)/) ? full_url = @url : full_url = 'http://' + @url
+        uri = URI(full_url)
+        @host = uri.host
       end
 
   end
