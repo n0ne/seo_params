@@ -18,8 +18,8 @@ module SeoParams
     end
 
     def yandex_pages
-       pages = ask_yandex(@url)
-      (pages.is_a? String) ? (@url = pages; pages = ask_yandex(pages); ) : pages
+      pages = ask_yandex(@url)
+      (pages.is_a? String) ? (url = pages; pages = ask_yandex(url); ) : pages
       pages
     end
 
