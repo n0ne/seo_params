@@ -26,6 +26,7 @@ module SeoParams
     end
 
     def gp
+      Google.new(url).google_pages
     end
 
     def yaposition
