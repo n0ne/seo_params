@@ -22,17 +22,17 @@ module SeoParams
       Yandex.new(url).tic
     end
 
-    def yap
+    def yap(url)
     end
 
-    def gp
+    def gp(url)
       Google.new(url).google_pages
     end
 
-    def yaposition
+    def yaposition(url)
     end
 
-    def gposition
+    def gposition(url)
     end
 
   end
