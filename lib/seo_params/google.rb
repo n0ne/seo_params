@@ -34,7 +34,7 @@ module SeoParams
 
       EventMachine.synchrony do
 
-        EM::Synchrony::FiberIterator.new(@keywords, @keywords.size).each do |keyword|
+        EM::Synchrony::FiberIterator.new(keywords, keywords.size).each do |keyword|
 
           new_keyword = check_keyword(keyword)
 
