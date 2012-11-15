@@ -18,7 +18,7 @@ module SeoParams
       Google.new(url).pagerank
     end
 
-    def tic
+    def tic(url)
       Yandex.new(url).tic
     end
 
