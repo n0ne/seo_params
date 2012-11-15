@@ -39,8 +39,26 @@ module SeoParams
     def yaposition(url)
     end
 
-    def gposition(url)
+    def gposition(url, keywords, options = {})
+      options[:hl] ||= "ru"
+      options[:cr] ||= "countryUA"
+      options[:num] ||= 100
+
+      (keywords.is_a? Array) ? keywords : keywords = keywords.split
+
+      Google.new(url).google_position(options[:hl], options[:cr], keywords, options[:num])
     end
+
+#    def sm(url, keywords, options = {})
+#      options[:hl] ||= "ru"
+#      options[:cr] ||= "countryUA"
+
+
+##      (pages.is_a? String) ? (url = pages; pages = ask_yandex(url); ) : pages
+#      (keywords.is_a? Array) ? (keywords) : keywords = keywords.split
+
+#      "Url: #{url}, lang: #{options[:hl]}, country: #{options[:cr]}, keys: #{keywords}"
+#    end
 
   end
 
