@@ -44,7 +44,7 @@ module SeoParams
       options[:cr] ||= "countryUA"
       options[:num] ||= 100
 
-      (keywords.is_a? Array) ? keywords : keywords = keywords.split
+      (keywords.is_a? Array) ? keywords : keywords = Array.new.push(keywords)
 
       Google.new(url).google_position(options[:hl], options[:cr], keywords, options[:num])
     end
