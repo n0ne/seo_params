@@ -19,6 +19,7 @@ module SeoParams
     end
 
     def tic
+      Yandex.new(url).tic
     end
 
     def yap
