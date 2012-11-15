@@ -6,7 +6,7 @@ module SeoParams
   class Yandex
 
     def initialize(url)
-      @url = url
+      url.match(/^(http:\/\/)/) ? @url = url : @url = 'http://' + url
     end
 
 
