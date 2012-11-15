@@ -23,10 +23,11 @@ module SeoParams
     end
 
     def yap(url)
+      Yandex.new(url).tic
     end
 
     def gp(url)
-      Google.new(url).google_pages
+      Google.new(url).yandex_pages
     end
 
     def yaposition(url)
