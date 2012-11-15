@@ -7,15 +7,15 @@ module SeoParams
 
   class << self
 
-    def initialize(url)
-      @url = url
-    end
+#    def initialize(url)
+#      @url = url
+#    end
 
     def all
     end
 
-    def pr
-      Google.new.pagerank(url)
+    def pr(url)
+      Google.new(url).pagerank
     end
 
     def tic
