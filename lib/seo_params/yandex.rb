@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 module SeoParams
 
   class Yandex
