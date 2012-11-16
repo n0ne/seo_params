@@ -88,10 +88,7 @@ module SeoParams
         i = 1
         doc = Nokogiri::XML(response.response)
 
-        doc.xpath("//error").map do |err|
-          puts err['code'], err.text()
-        end
-
+        pp doc
 
         if doc.xpath('//error')
           doc.xpath("//error").map do |err|
