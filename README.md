@@ -109,6 +109,46 @@ The previous example can be rewritten as follows:
 
 [1]: https://developers.google.com/custom-search/docs/xml_results?hl=en#interfaceLanguages
 [2]: https://developers.google.com/custom-search/docs/xml_results?hl=en#countryCollections
+
+
+### Check site position in the search for keywords in Yandex
+
+Checking the position of keywords in Yandex need only for RuNET, so further description will be in Russian.
+
+С проверкой позиций в Яндексе всё несколько сложнее.
+
+Во-первых, Вам необходимо быть зарегестрированным пользователем Яндекса. Сделать это можно по вот этой [ссылке][1].
+Во-вторых, добавить IP-адрес, с которого будут посылаться запросы к сервису Яндекса, на этой [страничке][2]
+В-третьих, скопировать/сохранить `user` и `key` из поля "Ваш адрес для совершения запроса" на страничке в предыдущем пункте. Важно знать, что просто зарегистрированные пользователи могут делать не более 10 запросов в день. Если Вы подтвердите Ваш номер телефона, то сможете делать до 1000 запросов в день. Думаю, для многих этого будет достаточно, а кому и этого мало, тогда следует ознакомиться с информацией на самом сайте, как увеличить данное число.
+
+В принципе, уже можно пробовать:
+
+``` ruby
+    keywords = ["rails", "ruby", "rvm", "spine.js"]
+    SeoParams.yaposition("www.none.com.ua", user, key, keywords)
+      # => {"ruby"=>0, "spine.js"=>2, "rvm"=>3, "rails"=>22}
+```
+
+Опять же, поиск осуществляется по Украине и при 100 результатах в выдаче. Эти параметры можно изменить:
+
+`:lr`  - идентификатор страны или региона поиска. Список идентификаторов часто используемых стран и регионов приведен в [приложении][3].
+
+`:num` - количество результатов в выдаче поиска. По умолчанию - 100. Ещё одно рекомендуемое значение 10.
+
+Приведённый выше пример можно переписать следующим образом:
+
+``` ruby
+    keywords = ["rails", "ruby", "rvm", "spine.js"]
+    SeoParams.yaposition("www.none.com.ua", user, key, keywords, :lr => 187, :num => 100)
+      # => {"ruby"=>0, "spine.js"=>2, "rvm"=>3, "rails"=>22}
+```
+Значение "0" в результатах поиска свидетельствует об отсутствии сайта в результате поиска по данному клучевому слову.
+
+[1]: http://passport.yandex.ru/passport?mode=register
+[2]: http://xml.yandex.ru/settings.xml
+[3]: http://api.yandex.ru/xml/doc/dg/reference/regions.xml
+
+
 ## Contributing
 
 1. Fork it
