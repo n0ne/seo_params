@@ -88,8 +88,6 @@ module SeoParams
         i = 1
         doc = Nokogiri::XML(response.response)
 
-#        puts doc
-
         if doc.xpath('//error')
           doc.xpath("//error").map do |err|
             h_err["error_code"] = err['code']
@@ -99,8 +97,7 @@ module SeoParams
 
 
         doc.xpath('//url').each do |link|
-#          puts link
-          if link.to_s[/none.com.ua/]
+          if link.to_s[/#{Regexp.escape(@host)}/]
             pos = i
             break
           else
