@@ -21,7 +21,7 @@ And then execute:
 Or install it yourself as:
 
 ``` bash
-    gem install PageRankr
+    gem install seo_params
 ```
 
 ## Usage
