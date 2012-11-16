@@ -8,6 +8,7 @@ module SeoParams
 
     def initialize(url)
       url.match(/^(http:\/\/)/) ? @url = url : @url = 'http://' + url
+      @host = URI(@url).host
     end
 
 
@@ -22,6 +23,31 @@ module SeoParams
       (pages.is_a? String) ? (url = pages; pages = ask_yandex(url); ) : pages
       pages
     end
+
+    def yandex_position(user, key, lr, keywords, num)
+
+      uri = URI.parse "http://xmlsearch.yandex.ru/xmlsearch?user=#{user}&key=#{key}&lr=#{lr}"
+
+      h = Hash.new
+
+      EventMachine.synchrony do
+        EM::Synchrony::FiberIterator.new(keywords, keywords.size).each do |keyword|
+          request = EventMachine::HttpRequest.new(uri)
+          response = request.post(:body => xml_request(keyword, num))
+
+          result = parse_results(response)
+
+          (result.is_a? Hash) ? (h.merge! result) : (h[keyword] = result)
+
+        end
+
+        EventMachine.stop
+      end
+
+      h
+
+    end
+
 
     private
       def ask_yandex(url)
@@ -46,6 +72,47 @@ module SeoParams
         index
       end
 
+      def xml_request keyword, num
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+          <request>
+            <query>#{keyword}</query>
+            <groupings>
+              <groupby attr=\"d\" mode=\"deep\" groups-on-page=\"#{num}\"  docs-in-group=\"1\" />
+            </groupings>
+          </request>"
+      end
+
+      def parse_results response
+        h_err = Hash.new
+        pos = 0
+        i = 1
+        doc = Nokogiri::XML(response.response)
+
+        doc.xpath("//error").map do |err|
+          puts err['code'], err.text()
+        end
+
+
+        if doc.xpath('//error')
+          doc.xpath("//error").map do |err|
+            h_err["error_code"] = err['code']
+            h_err["error_message"] = err.text()
+          end
+
+        else
+          doc.xpath('//url').each do |link|
+            if link.to_s[/#{Regexp.escape(@host)}/]
+              pos = i
+              break
+            else
+              i = i + 1
+            end
+          end
+        end
+
+        (h_err.length != 0) ? h_err : pos
+
+      end
   end
 
 end

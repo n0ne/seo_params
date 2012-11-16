@@ -7,10 +7,6 @@ module SeoParams
 
   class << self
 
-#    def initialize(url)
-#      @url = url
-#    end
-
     def all(url)
       h = Hash.new
       h["pr"] = pr(url)
@@ -36,29 +32,24 @@ module SeoParams
       Google.new(url).google_pages
     end
 
-    def yaposition(url)
+    def yaposition(url, user, key, keywords, options = {})
+      options[:lr]  ||= 187
+      options[:num] ||= 100
+
+      (keywords.is_a? Array) ? keywords : keywords = Array.new.push(keywords)
+
+      Yandex.new(url).yandex_position(user, key, options[:lr], keywords, options[:num])
     end
 
     def gposition(url, keywords, options = {})
-      options[:hl] ||= "ru"
-      options[:cr] ||= "countryUA"
+      options[:hl]  ||= "ru"
+      options[:cr]  ||= "countryUA"
       options[:num] ||= 100
 
       (keywords.is_a? Array) ? keywords : keywords = Array.new.push(keywords)
 
       Google.new(url).google_position(options[:hl], options[:cr], keywords, options[:num])
     end
-
-#    def sm(url, keywords, options = {})
-#      options[:hl] ||= "ru"
-#      options[:cr] ||= "countryUA"
-
-
-##      (pages.is_a? String) ? (url = pages; pages = ask_yandex(url); ) : pages
-#      (keywords.is_a? Array) ? (keywords) : keywords = keywords.split
-
-#      "Url: #{url}, lang: #{options[:hl]}, country: #{options[:cr]}, keys: #{keywords}"
-#    end
 
   end
 
