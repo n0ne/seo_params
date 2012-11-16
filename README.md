@@ -1,24 +1,39 @@
 # SeoParams
 
-TODO: Write a gem description
+This is a small application for seo purposes: you can get Google PageRank for your site, number of pages in Google index, Yandex tIC, number of pages in Yandex index.
+
+In addition you will be able to know the position of your website on search keywords in the search engines.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
+``` ruby
     gem 'seo_params'
+```
 
 And then execute:
 
-    $ bundle
+``` bash
+    bundle
+```
 
 Or install it yourself as:
 
-    $ gem install seo_params
+``` bash
+    gem install PageRankr
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+``` ruby
+    require 'seo_params'
+```
+### Fetch main SEO params
+
+``` ruby
+    SeoParams.all("")
+```
 
 ## Contributing
 

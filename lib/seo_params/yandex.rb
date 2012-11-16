@@ -7,7 +7,7 @@ module SeoParams
   class Yandex
 
     def initialize(url)
-      url.match(/^(http:\/\/)/) ? @url = url : @url = 'http://' + url
+      url.match(/^(https?:\/\/)/) ? @url = url : @url = 'http://' + url
       @host = URI(@url).host
     end
 
@@ -56,9 +56,9 @@ module SeoParams
 
         if doc.css('div.error-message').length > 0
           if doc.css('div.error-message').to_s.scan('Сайт является зеркалом')
-            url_regexp = /\?hostname\=([a-zA-Z\.0-9]{1,})/
+            url_regexp = /\?hostname\=([a-zA-Z\.:\/0-9]{1,})/
             new_url = doc.css('div.error-message').to_s.scan(url_regexp)[0][0]
-            index = 'http://' + new_url
+            index = new_url
           end
 
         else
