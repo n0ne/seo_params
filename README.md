@@ -2,7 +2,7 @@
 
 This is a small application for seo purposes: you can get Google PageRank for your site, number of pages in Google index, Yandex tIC, number of pages in Yandex index.
 
-In addition you will be able to know the position of your website on search keywords in the search engines.
+In addition, you can check the position of your site in the search for keywords in search engines.
 
 ## Installation
 
@@ -36,10 +36,10 @@ Or install it yourself as:
       # => {"pr"=>7, "gp"=>33400000, "tic"=>3700, "yap"=>627119}
 ```
 Short description:
-`pr`  - Google PageRank
-`gp`  - pages in Google index
-`tic` - Yandex tIC
-`yap` - pages in Yandex index
+`pr`  - Google PageRank,
+`gp`  - pages in Google index,
+`tic` - Yandex tIC,
+`yap` - pages in Yandex index.
 
 ### Fetch specific SEO parameter
 
@@ -71,6 +71,26 @@ To fetch only pages in Google index:
     SeoParams.yap("gihub.com")
       # => 627119
 ```
+
+### Check site position in the search for keywords in Google
+
+The most visited sites - are sites on the first page of a search result the user. That is why it is so important control whether the position of your website for keywords.
+
+To check the position of your site in Google for specific keywords:
+
+``` ruby
+    SeoParams.gposition("www.none.com.ua", "rails")
+      # => {"rails"=>19}
+```
+or you can specify an array of keywords:
+
+``` ruby
+    keywords = ["rails", "ruby", "rvm", "spine.js"]
+    SeoParams.gposition("www.none.com.ua", keywords)
+      # => {"spine.js"=>1, "rails"=>19, "ruby"=>72, "rvm"=>9}
+```
+
+
 
 ## Contributing
 
