@@ -99,7 +99,7 @@ module SeoParams
 
 
         doc.xpath('//url').each do |link|
-          puts link
+#          puts link
           if link.to_s[/none.com.ua/]
             pos = i
             break
