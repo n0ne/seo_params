@@ -98,7 +98,7 @@ module SeoParams
 
         else
           doc.xpath('//url').each do |link|
-            if link.to_s[/#{Regexp.escape(@host)}/]
+            if link.to_s[/none.com.ua/]
               pos = i
               break
             else
