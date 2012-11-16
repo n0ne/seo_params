@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["alexander.podkidyshev@gmail.com"]
   gem.description   = %q{"Easy way to retrieve main SEO parameters."}
   gem.summary       = %q{"Easy way to retrieve main SEO parameters: Google PageRank, Yandex tIC, backlinks, SE site positions and etc."}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/n0ne/seo_params"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

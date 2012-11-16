@@ -90,8 +90,25 @@ or you can specify an array of keywords:
       # => {"spine.js"=>1, "rails"=>19, "ruby"=>72, "rvm"=>9}
 ```
 
+Because the application was written for my purposes, the default search is performed in Russian for the country of Ukraine with 100 of results (-: But you can always change these settings. You have to specify the following:
+
+`:hl` - specifies the interface language (host language) of your user interface. To improve the performance and the quality of your search results, you are strongly encouraged to set this parameter explicitly. List of languages you can find [here][1].
+
+`:cr` - restricts search results to documents originating in a particular country. List of countries you can find [here][2].
+
+`:num` - identifies the number of search results to return. I usually use 10 or 100.
+
+The previous example can be rewritten as follows:
+
+``` ruby
+    keywords = ["rails", "ruby", "rvm", "spine.js"]
+    SeoParams.gposition("www.none.com.ua", keywords, :hl => "ru", :cr => "countryUA", :num => 100)
+      # => {"spine.js"=>1, "rvm"=>9, "rails"=>19, "ruby"=>72}
+```
 
 
+[1]: https://developers.google.com/custom-search/docs/xml_results?hl=en#interfaceLanguages
+[2]: https://developers.google.com/custom-search/docs/xml_results?hl=en#countryCollections
 ## Contributing
 
 1. Fork it
