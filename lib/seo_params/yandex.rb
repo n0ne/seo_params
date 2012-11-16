@@ -95,18 +95,19 @@ module SeoParams
             h_err["error_code"] = err['code']
             h_err["error_message"] = err.text()
           end
+        end
 
-        else
-          doc.xpath('//url').each do |link|
-            puts link
-            if link.to_s[/none.com.ua/]
-              pos = i
-              break
-            else
-              i = i + 1
-            end
+
+        doc.xpath('//url').each do |link|
+          puts link
+          if link.to_s[/none.com.ua/]
+            pos = i
+            break
+          else
+            i = i + 1
           end
         end
+
 
         (h_err.length != 0) ? h_err : pos
 
