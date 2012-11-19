@@ -15,7 +15,7 @@ module SeoParams
 
       h = Hash.new
       h["ip"] = get_ip
-      h["siterank"] = get_siterank == 'unknown' ? 'n/a' : get_siterank
+      h["siterank"] = get_siterank == 'unknown' ? 'n/a' : get_siterank.to_i
       h["country"] = get_country
       h["nameserver"] = get_nameserver
       h["firstseen"] = get_firstseen
