@@ -20,8 +20,14 @@ module SeoParams
 
     def yandex_pages
       pages = ask_yandex(@url)
-      (pages.is_a? String) ? (url = pages; pages = ask_yandex(url); ) : pages
+      (pages.is_a? String) ? (@url = pages; pages = ask_yandex(response); ) : pages
       pages
+
+
+
+#      response = ask_yandex(@url)
+
+#      (response.is_a? String) ? (@url = response; response = ask_yandex(response); ) : response
     end
 
     def yandex_position(user, key, lr, keywords, num)
