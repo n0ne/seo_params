@@ -20,7 +20,7 @@ module SeoParams
 
     def yandex_pages
       pages = ask_yandex(@url)
-      (pages.is_a? String) ? (@url = pages; pages = ask_yandex(response); ) : pages
+      (pages.is_a? String) ? (@url = pages; pages = ask_yandex(pages); ) : pages
       pages
 
 
