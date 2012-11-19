@@ -39,11 +39,11 @@ Short description:
 `pr`  - Google PageRank,
 `gp`  - pages in Google index,
 `tic` - Yandex tIC,
-`yap` - pages in Yandex index.
-`tweets` - Twitter tweets
-`likes` - Facebook likes, on Russian in my case
-`ar` - Alexa rank
-`dmoz` - presence in the DMOZ directory
+`yap` - pages in Yandex index,
+`tweets` - Twitter tweets,
+`likes` - Facebook likes, on Russian in my case,
+`ar` - Alexa rank,
+`dmoz` - presence in the DMOZ directory.
 
 ### Fetch specific SEO parameter
 
