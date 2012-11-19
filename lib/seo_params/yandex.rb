@@ -22,12 +22,6 @@ module SeoParams
       pages = ask_yandex(@url)
       (pages.is_a? String) ? (@url = pages; pages = ask_yandex(pages); ) : pages
       pages
-
-
-
-#      response = ask_yandex(@url)
-
-#      (response.is_a? String) ? (@url = response; response = ask_yandex(response); ) : response
     end
 
     def yandex_position(user, key, lr, keywords, num)
@@ -61,19 +55,13 @@ module SeoParams
         doc = Nokogiri::HTML(open("http://webmaster.yandex.ua/check.xml?hostname=#{url}"))
 
         if doc.css('div.error-message').length > 0
-#          if doc.css('div.error-message').to_s.scan('Сайт является зеркалом')
-#            url_regexp = /\?hostname\=([a-zA-Z\.:\/0-9]{1,})/
-#            new_url = doc.css('div.error-message').to_s.scan(url_regexp)[0][0]
-#            index = new_url
-#          end
+
           index = doc.css('div.error-message').children().children()[1].text()[0..-3].lstrip
 
         else
-          doc.css('div.header div').each do |link|
-              pages = /\d{1,}/
-              @pages_in_index = link.content.scan(pages)
-              index = @pages_in_index[0].to_i
-          end
+
+          index = doc.css('div.header div').text()[/\d+/].to_i
+
         end
 
         index
