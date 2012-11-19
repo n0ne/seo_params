@@ -13,6 +13,10 @@ module SeoParams
       h["gp"] = gp(url)
       h["tic"] = tic(url)
       h["yap"] = yap(url)
+      h["tweets"] = tweets(url)
+      h["likes"] = likes(url)
+      h["ar"] = ar(url)
+      h["dmoz"] = dmoz(url)
       h
     end
 
@@ -49,6 +53,22 @@ module SeoParams
       (keywords.is_a? Array) ? keywords : keywords = Array.new.push(keywords)
 
       Google.new(url).google_position(options[:hl], options[:cr], keywords, options[:num])
+    end
+
+    def tweets(url)
+      Twitter.new(url).tweets
+    end
+
+    def likes(url)
+      Fasebook.new(url).likes
+    end
+
+    def ar(url)
+      Alexa.new(url).rank
+    end
+
+    def dmoz(url)
+      Alexa.new(url).dmoz
     end
 
   end
