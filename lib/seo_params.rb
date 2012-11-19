@@ -60,7 +60,7 @@ module SeoParams
     end
 
     def likes(url)
-      Fasebook.new(url).likes
+      Facebook.new(url).likes
     end
 
     def ar(url)
