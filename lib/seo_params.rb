@@ -75,6 +75,10 @@ module SeoParams
       Alexa.new(url).dmoz
     end
 
+    def netcraft
+      Netcraft.new(url).all
+    end
+
   end
 
 end
