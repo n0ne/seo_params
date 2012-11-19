@@ -2,6 +2,10 @@
 
 require File.expand_path('../seo_params/google', __FILE__)
 require File.expand_path('../seo_params/yandex', __FILE__)
+require File.expand_path('../seo_params/alexa', __FILE__)
+require File.expand_path('../seo_params/facebook', __FILE__)
+require File.expand_path('../seo_params/netcraft', __FILE__)
+require File.expand_path('../seo_params/twitter', __FILE__)
 
 module SeoParams
 
