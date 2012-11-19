@@ -61,11 +61,12 @@ module SeoParams
         doc = Nokogiri::HTML(open("http://webmaster.yandex.ua/check.xml?hostname=#{url}"))
 
         if doc.css('div.error-message').length > 0
-          if doc.css('div.error-message').to_s.scan('Сайт является зеркалом')
-            url_regexp = /\?hostname\=([a-zA-Z\.:\/0-9]{1,})/
-            new_url = doc.css('div.error-message').to_s.scan(url_regexp)[0][0]
-            index = new_url
-          end
+#          if doc.css('div.error-message').to_s.scan('Сайт является зеркалом')
+#            url_regexp = /\?hostname\=([a-zA-Z\.:\/0-9]{1,})/
+#            new_url = doc.css('div.error-message').to_s.scan(url_regexp)[0][0]
+#            index = new_url
+#          end
+          index = doc.css('div.error-message').children().children()[1].text()[0..-3].lstrip
 
         else
           doc.css('div.header div').each do |link|
