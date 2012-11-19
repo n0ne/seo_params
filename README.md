@@ -33,13 +33,17 @@ Or install it yourself as:
 
 ``` ruby
     SeoParams.all("gihub.com")
-      # => {"pr"=>7, "gp"=>33400000, "tic"=>3700, "yap"=>627119}
+      # => {"pr"=>7, "gp"=>42200000, "tic"=>3700, "yap"=>627199, "tweets"=>532, "likes"=>"5,2 т.", "ar"=>276, "dmoz"=>"yes"}
 ```
 Short description:
 `pr`  - Google PageRank,
 `gp`  - pages in Google index,
 `tic` - Yandex tIC,
 `yap` - pages in Yandex index.
+`tweets` - Twitter tweets
+`likes` - Facebook likes, on Russian in my case
+`ar` - Alexa rank
+`dmoz` - presence in the DMOZ directory
 
 ### Fetch specific SEO parameter
 
@@ -70,6 +74,34 @@ To fetch only pages in Google index:
 ``` ruby
     SeoParams.yap("gihub.com")
       # => 627119
+```
+
+To fetch only tweets
+
+``` ruby
+    SeoParams.tweets("gihub.com")
+      # => 532
+```
+
+To fetch only likes
+
+``` ruby
+    SeoParams.likes("gihub.com")
+      # => "5,2 т."
+```
+
+DMOZ:
+
+``` ruby
+    SeoParams.dmoz("gihub.com")
+      # => "yes"
+```
+
+### Check Netcraft parametrs
+
+``` ruby
+    SeoParams.netcraft("gihub.com")
+      # => {"ip"=>"207.97.227.239", "siterank"=>9359, "country"=>"US", "nameserver"=>"ns1.p16.dynect.net", "firstseen"=>"August 2011", "dnsadmin"=>"hostmaster@github.com", "domainregistrator"=>"godaddy.com", "reversedns"=>"github.com", "organisation"=>"GitHub, Inc.", "nsorganisation"=>"Dynamic Network Services, Inc., 150 Dow St, Manchester, 03101, United States"}
 ```
 
 ### Check site position in the search for keywords in Google
