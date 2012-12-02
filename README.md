@@ -32,7 +32,7 @@ Or install it yourself as:
 ### Fetch main SEO params
 
 ``` ruby
-    SeoParams.all("gihub.com")
+    SeoParams.all("github.com")
       # => {"pr"=>7, "gp"=>42200000, "tic"=>3700, "yap"=>627199, "tweets"=>532, "likes"=>"5,2 т.", "ar"=>276, "dmoz"=>"yes"}
 ```
 Short description:
