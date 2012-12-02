@@ -43,7 +43,8 @@ Short description:
 `tweets` - Twitter tweets,
 `likes` - Facebook likes, on Russian in my case,
 `ar` - Alexa rank,
-`dmoz` - presence in the DMOZ directory.
+`dmoz` - presence in the DMOZ directory,
+`plus_ones` - number of Google +1s.
 
 ### Fetch specific SEO parameter
 
@@ -57,7 +58,7 @@ To fetch only Google PageRank:
 To fetch only pages in Google index:
 
 ``` ruby
-    SeoParams.gp("gihub.com")
+    SeoParams.gp("github.com")
       # => 44000000
 ```
 This request gives sometimes very strange results
@@ -65,36 +66,45 @@ This request gives sometimes very strange results
 To fetch only Yandex tIC:
 
 ``` ruby
-    SeoParams.tic("gihub.com")
+    SeoParams.tic("github.com")
       # => 3700
 ```
 
 To fetch only pages in Google index:
 
 ``` ruby
-    SeoParams.yap("gihub.com")
+    SeoParams.yap("github.com")
       # => 627119
 ```
 
 To fetch only tweets
 
 ``` ruby
-    SeoParams.tweets("gihub.com")
+    SeoParams.tweets("github.com")
       # => 532
 ```
 
 To fetch only likes
 
 ``` ruby
-    SeoParams.likes("gihub.com")
+    SeoParams.likes("github.com")
       # => "5,2 т."
 ```
 
 DMOZ:
 
 ``` ruby
-    SeoParams.dmoz("gihub.com")
+    SeoParams.dmoz("github.com")
       # => "yes"
+```
+
+Google +1:
+
+To fetch count of +1s
+
+``` ruby
+    SeoParams.plus_ones("github.com")
+      # => 3000
 ```
 
 ### Check Netcraft parametrs
