@@ -51,7 +51,7 @@ Short description:
 To fetch only Google PageRank:
 
 ``` ruby
-    SeoParams.pr("gihub.com")
+    SeoParams.pr("github.com")
       # => 7
 ```
 
@@ -110,7 +110,7 @@ To fetch count of +1s
 ### Check Netcraft parametrs
 
 ``` ruby
-    SeoParams.netcraft("gihub.com")
+    SeoParams.netcraft("github.com")
       # => {"ip"=>"207.97.227.239", "siterank"=>9359, "country"=>"US", "nameserver"=>"ns1.p16.dynect.net", "firstseen"=>"August 2011", "dnsadmin"=>"hostmaster@github.com", "domainregistrator"=>"godaddy.com", "reversedns"=>"github.com", "organisation"=>"GitHub, Inc.", "nsorganisation"=>"Dynamic Network Services, Inc., 150 Dow St, Manchester, 03101, United States"}
 ```
 
