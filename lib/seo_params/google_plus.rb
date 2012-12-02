@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
-require 'net/http'
+require 'nokogiri'
+require 'open-uri'
 
 module SeoParams
 
@@ -10,14 +11,21 @@ module SeoParams
     end
 
     def plus_ones
-      uri = URI.parse("https://clients6.google.com/rpc?key=AIzaSyCKSbrvQasunBoV16zDH9R33D88CeLr9gQ")
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      request = Net::HTTP::Post.new(uri.path)
-      request.set_form_data('key' => 'AIzaSyCKSbrvQasunBoV16zDH9R33D88CeLr9gQ')
-      request.body = '[{"method":"pos.plusones.get","id":"p","params":{"nolog":true,"id":"' + url + '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}]'
-      response = http.request(request)
+      api_url = "https://plusone.google.com/_/+1/fastbutton?url=#{@url}"
+      response = Nokogiri::HTML(open(api_url))
+      total_plus_ones = response.css("#aggregateCount")
+      convert_count(total_plus_ones.text())
+    end
+
+    private
+
+    def convert_count(count_string)
+      multiplier = case count_string[/(\D\z)/]
+      when 'M'; 1000000
+      when 'k'; 1000
+      else; 1
+      end
+      (count_string.to_f * multiplier).to_i
     end
 
   end
