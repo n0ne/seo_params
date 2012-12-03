@@ -12,7 +12,12 @@ module SeoParams
     end
 
     def rank
-      rank = @response.css("popularity").attr("text").content().to_i
+      begin
+        rank = @response.css("popularity").attr("text").content().to_i
+      rescue
+        rank = nil
+      end
+      rank
     end
 
     def dmoz

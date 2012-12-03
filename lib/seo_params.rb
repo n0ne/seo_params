@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 require File.expand_path('../seo_params/google', __FILE__)
+require File.expand_path('../seo_params/google_plus', __FILE__)
 require File.expand_path('../seo_params/yandex', __FILE__)
 require File.expand_path('../seo_params/alexa', __FILE__)
 require File.expand_path('../seo_params/facebook', __FILE__)
@@ -21,6 +22,7 @@ module SeoParams
       h["likes"] = likes(url)
       h["ar"] = ar(url)
       h["dmoz"] = dmoz(url)
+      h["plus_ones"] = plus_ones(url)
       h
     end
 
@@ -77,6 +79,10 @@ module SeoParams
 
     def netcraft(url)
       Netcraft.new(url).all
+    end
+
+    def plus_ones(url)
+      GooglePlus.new(url).plus_ones
     end
 
   end

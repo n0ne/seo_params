@@ -32,7 +32,7 @@ Or install it yourself as:
 ### Fetch main SEO params
 
 ``` ruby
-    SeoParams.all("gihub.com")
+    SeoParams.all("github.com")
       # => {"pr"=>7, "gp"=>42200000, "tic"=>3700, "yap"=>627199, "tweets"=>532, "likes"=>"5,2 т.", "ar"=>276, "dmoz"=>"yes"}
 ```
 Short description:
@@ -43,21 +43,22 @@ Short description:
 `tweets` - Twitter tweets,
 `likes` - Facebook likes, on Russian in my case,
 `ar` - Alexa rank,
-`dmoz` - presence in the DMOZ directory.
+`dmoz` - presence in the DMOZ directory,
+`plus_ones` - number of Google +1s.
 
 ### Fetch specific SEO parameter
 
 To fetch only Google PageRank:
 
 ``` ruby
-    SeoParams.pr("gihub.com")
+    SeoParams.pr("github.com")
       # => 7
 ```
 
 To fetch only pages in Google index:
 
 ``` ruby
-    SeoParams.gp("gihub.com")
+    SeoParams.gp("github.com")
       # => 44000000
 ```
 This request gives sometimes very strange results
@@ -65,42 +66,51 @@ This request gives sometimes very strange results
 To fetch only Yandex tIC:
 
 ``` ruby
-    SeoParams.tic("gihub.com")
+    SeoParams.tic("github.com")
       # => 3700
 ```
 
 To fetch only pages in Google index:
 
 ``` ruby
-    SeoParams.yap("gihub.com")
+    SeoParams.yap("github.com")
       # => 627119
 ```
 
 To fetch only tweets
 
 ``` ruby
-    SeoParams.tweets("gihub.com")
+    SeoParams.tweets("github.com")
       # => 532
 ```
 
 To fetch only likes
 
 ``` ruby
-    SeoParams.likes("gihub.com")
+    SeoParams.likes("github.com")
       # => "5,2 т."
 ```
 
 DMOZ:
 
 ``` ruby
-    SeoParams.dmoz("gihub.com")
+    SeoParams.dmoz("github.com")
       # => "yes"
+```
+
+Google +1:
+
+To fetch count of +1s
+
+``` ruby
+    SeoParams.plus_ones("github.com")
+      # => 3000
 ```
 
 ### Check Netcraft parametrs
 
 ``` ruby
-    SeoParams.netcraft("gihub.com")
+    SeoParams.netcraft("github.com")
       # => {"ip"=>"207.97.227.239", "siterank"=>9359, "country"=>"US", "nameserver"=>"ns1.p16.dynect.net", "firstseen"=>"August 2011", "dnsadmin"=>"hostmaster@github.com", "domainregistrator"=>"godaddy.com", "reversedns"=>"github.com", "organisation"=>"GitHub, Inc.", "nsorganisation"=>"Dynamic Network Services, Inc., 150 Dow St, Manchester, 03101, United States"}
 ```
 
