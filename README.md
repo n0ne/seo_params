@@ -88,7 +88,13 @@ To fetch only likes
 
 ``` ruby
     SeoParams.likes("github.com")
-      # => "5,2 т."
+      # => "83"
+```
+Or fetch all Facebook's parameters:
+
+``` ruby
+    SeoParams::Facebook.new("github.com").all
+      # => {"click_count"=>47, "comment_count"=>157, "like_count"=>83, "share_count"=>348, "total_count"=>588}
 ```
 
 DMOZ:
@@ -192,6 +198,16 @@ Checking the position of keywords in Yandex need only for RuNET, so further desc
 [2]: http://xml.yandex.ru/settings.xml
 [3]: http://api.yandex.ru/xml/doc/dg/reference/regions.xml
 
+## Changelog
+
+### v.0.0.6
+
+  * rewritten method of determining the number of Likes
+  * added method for fetching all the parameters provided by Facebook
+
+### v.0.0.5
+
+  * added method for fetching Google +1 counts
 
 ## Contributing
 
