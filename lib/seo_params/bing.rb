@@ -13,7 +13,7 @@ module SeoParams
 
     def bing_pages
       index = @response.css("span.sb_count").first.text.to_s[/[\d,]+/].delete! ","
-      pp index.to_i
+      index.to_i
     end
 
   end

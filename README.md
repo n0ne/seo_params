@@ -33,7 +33,7 @@ Or install it yourself as:
 
 ``` ruby
     SeoParams.all("github.com")
-      # => {"pr"=>7, "gp"=>42200000, "tic"=>3700, "yap"=>627199, "tweets"=>532, "likes"=>"5,2 т.", "ar"=>276, "dmoz"=>"yes"}
+      # => {"pr"=>7, "gp"=>52900000, "tic"=>3600, "yap"=>569898, "tweets"=>570, "likes"=>711, "ar"=>235, "dmoz"=>"yes", "plus_ones"=>3, "yahoo"=>361000, "bing"=>347000}
 ```
 Short description:
 `pr`  - Google PageRank,
@@ -44,7 +44,9 @@ Short description:
 `likes` - Facebook likes, on Russian in my case,
 `ar` - Alexa rank,
 `dmoz` - presence in the DMOZ directory,
-`plus_ones` - number of Google +1s.
+`plus_ones` - number of Google +1s,
+`yahoo` - pages in Yahoo index,
+`bing` - pages in Bing index.
 
 ### Fetch specific SEO parameter
 
@@ -111,6 +113,20 @@ To fetch count of +1s
 ``` ruby
     SeoParams.plus_ones("github.com")
       # => 3000
+```
+
+To fetch only pages in Yahoo index:
+
+``` ruby
+    SeoParams.yahoo("github.com")
+      # => 361000
+```
+
+To fetch only pages in Bing index:
+
+``` ruby
+    SeoParams.bing("github.com")
+      # => 347000
 ```
 
 ### Check Netcraft parametrs
@@ -199,6 +215,11 @@ Checking the position of keywords in Yandex need only for RuNET, so further desc
 [3]: http://api.yandex.ru/xml/doc/dg/reference/regions.xml
 
 ## Changelog
+
+### v.0.0.7
+
+  * added method for fetching number of pages in Yahoo index
+  * added method for fetching number of pages in Bing index
 
 ### v.0.0.6
 

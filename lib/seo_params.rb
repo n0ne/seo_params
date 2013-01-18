@@ -7,7 +7,7 @@ require File.expand_path('../seo_params/alexa', __FILE__)
 require File.expand_path('../seo_params/facebook', __FILE__)
 require File.expand_path('../seo_params/netcraft', __FILE__)
 require File.expand_path('../seo_params/twitter', __FILE__)
-#require File.expand_path('../seo_params/yahoo', __FILE__)
+require File.expand_path('../seo_params/yahoo', __FILE__)
 require File.expand_path('../seo_params/bing', __FILE__)
 
 module SeoParams
@@ -25,8 +25,8 @@ module SeoParams
       h["ar"] = ar(url)
       h["dmoz"] = dmoz(url)
       h["plus_ones"] = plus_ones(url)
-      h["yahoo"] = yahoo()
-      h["bing"] = bing()
+      h["yahoo"] = yahoo(url)
+      h["bing"] = bing(url)
       h
     end
 
@@ -89,11 +89,11 @@ module SeoParams
       GooglePlus.new(url).plus_ones
     end
 
-    def yahoo
+    def yahoo(url)
       Yahoo.new(url).yahoo_pages
     end
 
-    def bing
+    def bing(url)
       Bing.new(url).bing_pages
     end
 
